@@ -3,33 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Effect with Reflection and Shadow</title>
+<title>Centered 3D Effect with Vertical and Horizontal Spacing</title>
 <style>
   body {
     margin: 0;
-    padding: 20px; /* Added padding for body to ensure there's space around monitors */
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
     background: #1065bb;
-    min-height: 100vh; /* Use min-height to ensure body takes at least full viewport height */
-    overflow-x: auto; /* Allows horizontal scrolling if monitors exceed viewport width */
+  }
+
+  .monitors-wrapper {
+    position: relative;
+    /* Adjust width and height based on the number of monitors and their spacing */
+    width: calc(300px + 4 * 200px); /* Monitor width + horizontal spacing */
+    height: calc(300px + 4 * 200px); /* Monitor height + vertical spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .monitor-container {
-    display: flex; /* This will line up all the monitors horizontally */
-    gap: 20px; /* Space between each monitor */
+    perspective: 600px;
+    position: absolute;
   }
+
+  /* Position each monitor with specific offset */
+  .monitor-container:nth-child(1) { transform: translate(0, 0); }
+  .monitor-container:nth-child(2) { transform: translate(100px, 20px); }
+  .monitor-container:nth-child(3) { transform: translate(200px, 35px); }
+  .monitor-container:nth-child(4) { transform: translate(300px, 50px); }
+  .monitor-container:nth-child(5) { transform: translate(400px, 65px); }
 
   .monitor {
     width: 300px;
     height: 200px;
     background-image: url('20240308061151_004.jpg'); /* Replace with your screenshot */
     background-size: cover;
-    border: 3px solid #fff;
-    box-shadow: 10px 10px 30px rgba(0,0,0,0.5); /* Shadow for 3D effect */
+
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
     position: relative;
-    transform: rotateX(10deg) rotateY(30deg) rotateZ(0deg); /* 3D rotation */
+    transform: rotateX(10deg) rotateY(35deg) rotateZ(0deg);
   }
 
   .reflection {
@@ -37,11 +52,11 @@
     width: 100%;
     height: 100%;
     bottom: -210px;
-    background-image: inherit; /* Use the same background image as the monitor */
+    background-image: url('20240308061151_004.jpg');
     background-size: cover;
-    transform: scaleY(-1); /* Flip the image vertically */
+    transform: scaleY(-1);
     opacity: 0.2;
-    filter: blur(1px); /* Soften the reflection */
+    filter: blur(1px);
   }
 
   .monitor:before {
@@ -52,19 +67,29 @@
     width: 80%;
     height: 20px;
     background: rgba(0, 0, 0, 0.7);
-    filter: blur(10px); /* Soften the shadow */
-    z-index: -1; /* Ensure it's below the monitor */
-    transform: rotateX(90deg); /* Flatten the shadow onto the surface */
+    filter: blur(10px);
+    z-index: -1;
+    transform: rotateX(90deg);
   }
 </style>
 </head>
 <body>
-<div class="monitor-container">
-  <div class="monitor"><div class="reflection"></div></div>
-  <div class="monitor"><div class="reflection"></div></div>
-  <div class="monitor"><div class="reflection"></div></div>
-  <div class="monitor"><div class="reflection"></div></div>
-  <div class="monitor"><div class="reflection"></div></div>
+<div class="monitors-wrapper">
+  <div class="monitor-container">
+    <div class="monitor"><div class="reflection"></div></div>
+  </div>
+  <div class="monitor-container">
+    <div class="monitor"><div class="reflection"></div></div>
+  </div>
+  <div class="monitor-container">
+    <div class="monitor"><div class="reflection"></div></div>
+  </div>
+  <div class="monitor-container">
+    <div class="monitor"><div class="reflection"></div></div>
+  </div>
+  <div class="monitor-container">
+    <div class="monitor"><div class="reflection"></div></div>
+  </div>
 </div>
 </body>
 </html>
