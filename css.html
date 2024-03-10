@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Effect with Reflection</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+  }
+
+  .monitor {
+    width: 300px;
+    height: 200px;
+    background-image: url('20240308061151_004.jpg'); /* Replace with your screenshot */
+    background-size: cover;
+    border: 3px solid #fff;
+    margin: 20px;
+    box-shadow: 10px 10px 30px #000;
+    position: relative;
+  }
+
+  .reflection {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: -210px; /* Adjust the vertical position of the reflection */
+    background-image: url('20240308061151_004.jpg'); /* Replace with your screenshot */
+    background-size: cover;
+    transform: scaleY(-1); /* Flip the image vertically */
+    opacity: 0.2; /* Reflection opacity */
+    filter: blur(1px); /* Soften the reflection */
+  }
+</style>
+</head>
+<body>
+<div class="monitor-container">
+  <div class="monitor">
+    <div class="reflection"></div>
+  </div>
+</div>
+</body>
+</html>
