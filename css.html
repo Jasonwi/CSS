@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     background: #333;
+    perspective: 1000px; /* Add perspective to enhance 3D effect */
   }
 
   .monitor {
@@ -23,6 +24,8 @@
     margin: 20px;
     box-shadow: 10px 10px 30px #000;
     position: relative;
+    /* Add rotation around the x-axis and y-axis */
+    transform: rotateX(315deg) rotateY(15deg) rotateZ(10deg); /* Tweak these values to adjust the tilt */
   }
 
   .reflection {
@@ -32,7 +35,8 @@
     bottom: -210px; /* Adjust the vertical position of the reflection */
     background-image: url('20240308061151_004.jpg'); /* Replace with your screenshot */
     background-size: cover;
-    transform: scaleY(-1); /* Flip the image vertically */
+    /* Invert the image, adjust to match the monitor's rotation */
+    transform: scaleY(-1) rotateX(-10deg); 
     opacity: 0.2; /* Reflection opacity */
     filter: blur(1px); /* Soften the reflection */
   }
