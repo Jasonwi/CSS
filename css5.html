@@ -7,17 +7,18 @@
 <style>
   body {
     margin: 0;
-    height: 100vh;
+    padding: 20px; /* Added padding for body to ensure there's space around monitors */
     display: flex;
     justify-content: center;
     align-items: center;
     background: #1065bb;
-    flex-wrap: wrap; /* Allow multiple lines of items */
+    min-height: 100vh; /* Use min-height to ensure body takes at least full viewport height */
+    overflow-x: auto; /* Allows horizontal scrolling if monitors exceed viewport width */
   }
 
   .monitor-container {
-    perspective: 600px; /* Add perspective to the container */
-    margin: 20px; /* Add some space around each monitor container */
+    display: flex; /* This will line up all the monitors horizontally */
+    gap: 20px; /* Space between each monitor */
   }
 
   .monitor {
@@ -26,9 +27,9 @@
     background-image: url('20240308061151_004.jpg'); /* Replace with your screenshot */
     background-size: cover;
     border: 3px solid #fff;
-    box-shadow: 10px 10px 30px rgba(0,0,0,0.5); /* Add shadow here */
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.5); /* Shadow for 3D effect */
     position: relative;
-    transform: rotateX(10deg) rotateY(30deg) rotateZ(0deg); /* Add 3D rotation */
+    transform: rotateX(10deg) rotateY(30deg) rotateZ(0deg); /* 3D rotation */
   }
 
   .reflection {
@@ -36,11 +37,11 @@
     width: 100%;
     height: 100%;
     bottom: -210px;
-    background-image: url('20240308061151_004.jpg'); /* Replace with your screenshot */
+    background-image: inherit; /* Use the same background image as the monitor */
     background-size: cover;
     transform: scaleY(-1); /* Flip the image vertically */
     opacity: 0.2;
-    filter: blur(1px);
+    filter: blur(1px); /* Soften the reflection */
   }
 
   .monitor:before {
@@ -51,26 +52,18 @@
     width: 80%;
     height: 20px;
     background: rgba(0, 0, 0, 0.7);
-    filter: blur(10px);
-    z-index: -1;
-    transform: rotateX(90deg);
+    filter: blur(10px); /* Soften the shadow */
+    z-index: -1; /* Ensure it's below the monitor */
+    transform: rotateX(90deg); /* Flatten the shadow onto the surface */
   }
 </style>
 </head>
 <body>
 <div class="monitor-container">
   <div class="monitor"><div class="reflection"></div></div>
-</div>
-<div class="monitor-container">
   <div class="monitor"><div class="reflection"></div></div>
-</div>
-<div class="monitor-container">
   <div class="monitor"><div class="reflection"></div></div>
-</div>
-<div class="monitor-container">
   <div class="monitor"><div class="reflection"></div></div>
-</div>
-<div class="monitor-container">
   <div class="monitor"><div class="reflection"></div></div>
 </div>
 </body>
