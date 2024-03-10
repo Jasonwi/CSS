@@ -12,10 +12,12 @@
     justify-content: center;
     align-items: center;
     background: #1065bb;
+    flex-wrap: wrap; /* Allow multiple lines of items */
   }
 
   .monitor-container {
     perspective: 600px; /* Add perspective to the container */
+    margin: 20px; /* Add some space around each monitor container */
   }
 
   .monitor {
@@ -24,7 +26,6 @@
     background-image: url('20240308061151_004.jpg'); /* Replace with your screenshot */
     background-size: cover;
     border: 3px solid #fff;
-    margin: 20px;
     box-shadow: 10px 10px 30px rgba(0,0,0,0.5); /* Add shadow here */
     position: relative;
     transform: rotateX(10deg) rotateY(30deg) rotateZ(0deg); /* Add 3D rotation */
@@ -42,26 +43,35 @@
     filter: blur(1px);
   }
 
-  /* Add an additional shadow below the monitor to simulate lifting effect */
   .monitor:before {
     content: '';
     position: absolute;
-    bottom: -20px; /* Adjust based on your preference */
-    left: 10%; /* Start a bit from the left */
-    width: 80%; /* Slightly narrower than the monitor to look more realistic */
-    height: 20px; /* Height of the shadow */
+    bottom: -20px;
+    left: 10%;
+    width: 80%;
+    height: 20px;
     background: rgba(0, 0, 0, 0.7);
-    filter: blur(10px); /* Soften the shadow */
-    z-index: -1; /* Ensure it's below the monitor */
-    transform: rotateX(90deg); /* Flatten the shadow onto the surface */
+    filter: blur(10px);
+    z-index: -1;
+    transform: rotateX(90deg);
   }
 </style>
 </head>
 <body>
 <div class="monitor-container">
-  <div class="monitor">
-    <div class="reflection"></div>
-  </div>
+  <div class="monitor"><div class="reflection"></div></div>
+</div>
+<div class="monitor-container">
+  <div class="monitor"><div class="reflection"></div></div>
+</div>
+<div class="monitor-container">
+  <div class="monitor"><div class="reflection"></div></div>
+</div>
+<div class="monitor-container">
+  <div class="monitor"><div class="reflection"></div></div>
+</div>
+<div class="monitor-container">
+  <div class="monitor"><div class="reflection"></div></div>
 </div>
 </body>
 </html>
